@@ -1,0 +1,1 @@
+the code fetches the availble apartments from the link and outputs if ERL deggendorf apartments are availble or not. if you are from ERL and dont like this send me a message for me to delete it
