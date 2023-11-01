@@ -14,6 +14,12 @@ To get started, follow these steps:
 2. Replace `variables.token` with your bot's token in the script.
 3. Run the script to check apartment availability.
 
+or just use the online bot under https://t.me/ERLcheckerbot
+use /job to check for availability
+
+Important: bot is still new and im working on automation and other features!
+Have pateince!!
+
 ## Contact
 
 If you have any questions or concerns, feel free to reach out by sending a message.
