@@ -1,25 +1,25 @@
-
-from telegram import ForceReply, Update, Bot
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
+from telegram import ForceReply, Update
+from telegram.ext import Application, CommandHandler, ContextTypes,CallbackContext
 import checker
 import varibles
 import logging
+# from datetime import datetime
+
+
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
-# set higher logging level for httpx to avoid all GET and POST requests being logged
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
 
-
-# global active
-# active = True
 application = Application.builder().token(varibles.TOKEN).build()
 
-# job_queue = application.job_queue
+
+
+
 
 # async def thejob(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 #         url  = "https://www.erl.de/wp-json/kundenportal/v1/onoffice/get-stammobjekt-free-apartments?id=573"
@@ -48,7 +48,8 @@ application = Application.builder().token(varibles.TOKEN).build()
 
 
 
-# job_queue.run_repeating(thejob, interval=5, first=0)
+# current_datetime = datetime.now()
+
 
 
 
@@ -70,11 +71,38 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Send a message when the command /help is issued."""
     await update.message.reply_text("Help!")
 
-async def solution(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def solution(context: CallbackContext) -> None:
         checker.thejob()
-        # if checker.counter > 1:
-        #    
-        await  context.bot.send_message(chat_id = context._chat_id, text=checker.status)
+        print("SOLUTION STARTED")
+        if checker.status == "apartments available":
+                job = context.chat_data.get('solution')
+                job.schedule_removal()  # remove the repeating job from the job queue
+                del context.chat_data['solution']
+                await  context.bot.send_message(chat_id = context._chat_id, text= "removed! apartments available")
+        elif checker.status == "No apartments available":        
+                if checker.counter > 180:
+                    await  context.bot.send_message(chat_id = context._chat_id, text="checked for 6 hours" + " " + str(checker.counter))
+                    checker.counter = 0
+        
+
+
+async def go(update: Update, context: CallbackContext):
+    # chat_id = context._chat_id
+    # job_queue = Application.job_queue
+    job = context.chat_data.get('solution')
+    if job:
+          await context.bot.send_message(chat_id = context._chat_id, text="job already running")
+    else:
+        await  context.bot.send_message(chat_id = context._chat_id, text="job started for the first time")
+        job = context.chat_data['solution'] = context.job_queue.run_repeating(solution, interval=120, first=0, name = "solution", chat_id=context._chat_id)
+
+
+    print("go started")
+
+async def jobb(update: Update, context: CallbackContext) -> None:
+        checker.thejob()
+        single_counter = 0
+        await  context.bot.send_message(chat_id = context._chat_id, text= single_counter)
 
 
 def main() -> None:
@@ -82,12 +110,8 @@ def main() -> None:
     # on different commands - answer in Telegram
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
-    application.add_handler(CommandHandler("job", solution))
-    # solution(update, context)
-    application.add_handler(MessageHandler(filters.CHAT , solution))
-
-
-
+    application.add_handler(CommandHandler("job", jobb))
+    application.add_handler(CommandHandler("go" , go))
 
 
     # Run the bot until the user presses Ctrl-C
