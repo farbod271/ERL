@@ -6,6 +6,10 @@ If you wish to use this script with your own bot, simply replace the `variables.
 
 **Note**: If you are from ERL and have concerns about this repository, please send me a message, and I will take appropriate action, including removing the repository if necessary.
 
+**NEW VERSION**
+
+THE NEW VESRION CHECKS THE Availability automatICALLY. BUT YOU MUST SEND A COMMAND BEFORE THAT. WILL NOT ANNOUNE HERE AS OF YET. IF YOU KNOW HOW TO CODE ITS VIVIBLE IN THE SOURCECODE AND IT WORKS IF YOU FIGURE IT OUT
+
 ## Getting Started
 
 To get started, follow these steps:
