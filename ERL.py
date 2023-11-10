@@ -102,7 +102,7 @@ async def go(update: Update, context: CallbackContext):
 async def jobb(update: Update, context: CallbackContext) -> None:
         checker.thejob()
         # single_counter = 0
-        await  context.bot.send_message(chat_id = context._chat_id, text= checker.status)
+        await  context.bot.send_message(chat_id = context._chat_id, text= checker.status + " " + str(checker.counter))
 
 
 def main() -> None:
