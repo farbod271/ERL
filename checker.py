@@ -14,7 +14,7 @@ def thejob():
         data_json = json.loads(response.read())
 
         try:
-                if (data_json["success"] == True) and data_json["apartmentsAvailable"]["0"] == 1 and (data_json["apartmentsAvailable"]["1"] == 0) and (data_json["apartmentsAvailable"]["2"] == 0) and (data_json["apartmentsAvailable"]["3"] ==280):
+                if (data_json["success"] == True) and data_json["apartmentsAvailable"]["0"] == 0 and (data_json["apartmentsAvailable"]["1"] == 0) and (data_json["apartmentsAvailable"]["2"] == 0) and (data_json["apartmentsAvailable"]["3"] ==280):
                         status = "No apartments available"
                         counter = counter + 1
                         print(counter)
