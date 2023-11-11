@@ -48,7 +48,7 @@ async def solution(context: CallbackContext) -> None:
                 await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaaay\nApartments available\nRemoved the job automatically\nCounter is at:" + " " + str(checker.counter))
         elif checker.status == "No apartments available":        
                 if checker.counter >= 200:
-                    await  context.bot.send_message(chat_id = context._chat_id, text="Sorry nothing is availble\nchecked for 6 hours\nCounter is at" + " " + str(checker.counter))
+                    await  context.bot.send_message(chat_id = context._chat_id, text="Sorry nothing is availble\nchecked for 5 hours\nCounter is at" + " " + str(checker.counter))
                     checker.counter = 0
         
 

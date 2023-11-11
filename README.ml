@@ -1,12 +1,11 @@
 # Apartment Availability Checker
 
 This script fetches information about available apartments from a specific link and determines if apartments in ERL Deggendorf are currently available or not. For security reasons, I have excluded the bot token from the Git repository.
-
 If you wish to use this script with your own bot, simply replace the `variables.token` with your bot's token.
 
 **Note**: If you are from ERL and have concerns about this repository, please send me a message, and I will take appropriate action, including removing the repository if necessary.
 
-**NEW VERSION**
+# **NEW VERSION**
 
 THE NEW VESRION CHECKS THE Availability automatICALLY. BUT YOU MUST SEND A COMMAND BEFORE THAT. WILL NOT ANNOUNE HERE AS OF YET. IF YOU KNOW HOW TO CODE ITS VIVIBLE IN THE SOURCECODE AND IT WORKS IF YOU FIGURE IT OUT
 
@@ -19,10 +18,10 @@ To get started, follow these steps:
 3. Run the script to check apartment availability.
 
 or just use the online bot under https://t.me/ERLcheckerbot
-use /job to check for availability
+use /look to check for availability
+use /fetch to fetch data that instant and check for availability
 
-Important: bot is still new and im working on automation and other features!
-Have pateince!!
+
 
 ## Contact
 
