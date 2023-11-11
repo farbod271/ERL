@@ -71,9 +71,9 @@ async def go(update: Update, context: CallbackContext):
 async def job(update: Update, context: CallbackContext) -> None:
         checker.thejob()
         if checker.status == "apartments available":
-            await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaay!\nApartments are availble.\nCounter is at:" + " " + str(checker.counter))
+            await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaay!\nApartments are availble\nCounter is at:" + " " + str(checker.counter))
         elif checker.status == "No apartments available":
-            await  context.bot.send_message(chat_id = context._chat_id, text= "Sorry nothing is availble.\nCounter is at:" + " " + str(checker.counter))
+            await  context.bot.send_message(chat_id = context._chat_id, text= "Sorry nothing is availble\nCounter is at:" + " " + str(checker.counter))
 
 
 
