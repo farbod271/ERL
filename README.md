@@ -7,19 +7,22 @@ If you wish to use this script with your own bot, simply replace the `variables.
 
 # **NEW VERSION**
 
-THE NEW VESRION CHECKS THE Availability automatICALLY. BUT YOU MUST SEND A COMMAND BEFORE THAT. WILL NOT ANNOUNE HERE AS OF YET. IF YOU KNOW HOW TO CODE ITS VIVIBLE IN THE SOURCECODE AND IT WORKS IF YOU FIGURE IT OUT
+The new version checks the availability automatically. But you must send a command before that. will not announce here as of yet. if you know how to code, it's visible in the source code, and it works when you figure it out.
 
 ## Getting Started
 
-To get started, follow these steps:
+To get started:
 
+use the Live bot under https://t.me/ERLcheckerbot\n
+use /look to check for availability\n
+use /fetch to fetch data that instant and check for availability
+
+#### or alternativaly
 1. Clone this repository to your local machine.
 2. Replace `variables.token` with your bot's token in the script.
 3. Run the script to check apartment availability.
 
-or just use the online bot under https://t.me/ERLcheckerbot
-use /look to check for availability
-use /fetch to fetch data that instant and check for availability
+
 
 
 
