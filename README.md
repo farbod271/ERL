@@ -13,8 +13,10 @@ The new version checks the availability automatically. But you must send a comma
 
 To get started:
 
-use the Live bot under https://t.me/ERLcheckerbot\n
-use /look to check for availability\n
+use the Live bot under https://t.me/ERLcheckerbot  
+
+use /look to check for availability  
+
 use /fetch to fetch data that instant and check for availability
 
 #### or alternativaly
