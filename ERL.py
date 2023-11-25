@@ -11,10 +11,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logging.getLogger("httpx").setLevel(logging.WARNING)
-
 logger = logging.getLogger(__name__)
-
-
 application = Application.builder().token(varibles.TOKEN).build()
 
 
@@ -47,8 +44,8 @@ async def solution(context: CallbackContext) -> None:
                 del context.chat_data['solution']
                 await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaaay\nApartments available\nRemoved the job automatically\nCounter is at:" + " " + str(checker.counter))
         elif checker.status == "No apartments available":        
-                if checker.counter >= 200:
-                    await  context.bot.send_message(chat_id = context._chat_id, text="Sorry nothing is availble\nchecked for 5 hours\nCounter is at" + " " + str(checker.counter))
+                if checker.counter >= 320:
+                    await  context.bot.send_message(chat_id = context._chat_id, text="Sorry nothing is availble\nchecked for 8 hours\nCounter is at" + " " + str(checker.counter))
                     checker.counter = 0
         
 

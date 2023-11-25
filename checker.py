@@ -3,8 +3,6 @@ from urllib.request import urlopen
 
 
 counter = 0
-
-
 def thejob():
         global counter
         global status
@@ -28,8 +26,3 @@ def thejob():
         except:
                 print("we have an error")
                 # active = True
-        
-
-# while True:
-#     thejob()
-#     time.sleep(2)
