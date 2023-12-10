@@ -3,6 +3,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes,CallbackConte
 import checker
 import varibles
 import logging
+import names
 # from datetime import datetime
 
 
@@ -18,13 +19,12 @@ application = Application.builder().token(varibles.TOKEN).build()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /start is issued."""
-    user = update.effective_user
-    await update.message.reply_html(
-        rf"Hi {user.mention_html()}!",
-        reply_markup=ForceReply(selective=True),
-    )
-    await  context.bot.send_message(chat_id = context._chat_id, text="its working")
+    # user = update.effective_user
+    # await update.message.reply_html(
+    #     rf"Hi {user.mention_html()}!",
+    #     reply_markup=ForceReply(selective=True),
+    # )
+    await  context.bot.send_message(chat_id = context._chat_id, text="Hi the bot is working")
 
 
 
@@ -67,11 +67,26 @@ async def go(update: Update, context: CallbackContext):
 
 
 async def job(update: Update, context: CallbackContext) -> None:
-        checker.notjob()
-        if checker.status == "apartments available":
-            await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaay!\nApartments are availble\nCounter is at:" + " " + str(checker.counter))
-        elif checker.status == "No apartments available":
-            await  context.bot.send_message(chat_id = context._chat_id, text= "Sorry nothing is availble\nCounter is at:" + " " + str(checker.counter))
+        # print(update.effective_user.username)
+        if update.effective_user.username not in names.dict:
+            names.dict[update.effective_user.username] = int(1)
+        else:
+            names.dict[update.effective_user.username] += 1
+        print(names.dict)
+        text_to_save = str(names.dict)
+        file_path = "namess.txt"
+        with open(file_path, 'w') as file:
+            file.write(text_to_save)
+        print(f"String saved to '{file_path}'")
+
+        if names.dict[update.effective_user.username] <= 120:
+            checker.notjob()
+            if checker.status == "apartments available":
+                await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaay!\nApartments are availble\nCounter is at:" + " " + str(checker.counter))
+            elif checker.status == "No apartments available":
+                await  context.bot.send_message(chat_id = context._chat_id, text= "Sorry nothing is availble\nCounter is at:" + " " + str(checker.counter))
+        else:
+            await  context.bot.send_message(chat_id = context._chat_id, text= "fuck off. you sent too many requests")
 
 
 
