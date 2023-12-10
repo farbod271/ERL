@@ -39,7 +39,7 @@ async def solution(context: CallbackContext) -> None:
         checker.thejob()
         print("SOLUTION STARTED")
         if checker.status == "apartments available":
-                job = context.chat_data.get('solution')
+                job = context.bot_data.get('solution')
                 job.schedule_removal()  # remove the repeating job from the job queue
                 del context.chat_data['solution']
                 await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaaay\nApartments available\nRemoved the job automatically\nCounter is at:" + " " + str(checker.counter))
@@ -55,18 +55,19 @@ async def solution(context: CallbackContext) -> None:
 async def go(update: Update, context: CallbackContext):
     # chat_id = context._chat_id
     # job_queue = Application.job_queue
-    job = context.chat_data.get('solution')
+    job = context.bot_data.get('solution')
     if job:
           await context.bot.send_message(chat_id = context._chat_id, text="job already running..")
+          print(context)
     else:
         await  context.bot.send_message(chat_id = context._chat_id, text="job started for the first time")
-        job = context.chat_data['solution'] = context.job_queue.run_repeating(solution, interval=90, first=0, name = "solution", chat_id=context._chat_id)
+        job = context.bot_data['solution'] = context.job_queue.run_repeating(solution, interval=90, first=0, name = "solution", chat_id=context._chat_id)
     print("go started")
 
 
 
 async def job(update: Update, context: CallbackContext) -> None:
-        checker.thejob()
+        checker.notjob()
         if checker.status == "apartments available":
             await  context.bot.send_message(chat_id = context._chat_id, text= "yaaaay!\nApartments are availble\nCounter is at:" + " " + str(checker.counter))
         elif checker.status == "No apartments available":
