@@ -67,7 +67,6 @@ async def go(update: Update, context: CallbackContext):
 
 
 async def job(update: Update, context: CallbackContext) -> None:
-        # print(update.effective_user.username)
         if update.effective_user.username not in names.dict:
             names.dict[update.effective_user.username] = int(1)
         else:
@@ -77,7 +76,7 @@ async def job(update: Update, context: CallbackContext) -> None:
         file_path = "namess.txt"
         with open(file_path, 'w') as file:
             file.write(text_to_save)
-        print(f"String saved to '{file_path}'")
+        # print(f"String saved to '{file_path}'")
 
         if names.dict[update.effective_user.username] <= 120:
             checker.notjob()
