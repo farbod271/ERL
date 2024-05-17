@@ -8,8 +8,8 @@ If you wish to use this script with your own bot, simply replace the `variables.
 To get started:
 
 use the Live bot under https://t.me/ERLcheckerbot  
-use /look to check for availability  
-use /fetch to fetch data that instant and check for availability
+use /fetch to check availability  
+use /scout to activate the look up engine and subscribe for the notification
 
 #### or alternativaly
 1. Clone this repository to your local machine.
@@ -19,7 +19,7 @@ use /fetch to fetch data that instant and check for availability
 
 ### NEW VERSION
 
-The new version checks the availability automatically. But you must send a command before that. will not announce here as of yet. if you know how to code, it's visible in the source code, and it works when you figure it out.
+In the new version I added the scout command.
 
 ### Important
 
