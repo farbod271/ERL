@@ -24,6 +24,7 @@ def thejob():
                                 print(counter)
                                 # return(status, counter)
                                 # print("checking apartment availbility", counter)
+                                # some changes
                                 
                                         
                         else:
