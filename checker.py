@@ -43,7 +43,7 @@ def notjob():
                 data_json = json.loads(response.read())
 
                 try:
-                        if (data_json["success"] == True) and data_json["apartmentsAvailable"]["0"] == 0 and (data_json["apartmentsAvailable"]["1"] == 0) and (data_json["apartmentsAvailable"]["2"] == 0) and (data_json["apartmentsAvailable"]["3"] ==280):
+                        if (data_json["success"] == True) and data_json["apartmentsAvailable"]["0"] == 0 and (data_json["apartmentsAvailable"]["1"] == 0) and (data_json["apartmentsAvailable"]["2"] == 0) and (data_json["apartmentsAvailable"]["3"] ==219) and (data_json["apartmentsAvailable"]["4"] == 0):
                                 status = "No apartments available"
                                 # return(status, counter)
                                 # print("checking apartment availbility", counter)
